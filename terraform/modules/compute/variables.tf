@@ -1,64 +1,80 @@
 variable "name" {
-  type = string
-  description = "Name of the compute resources"
+  type        = string
+  description = "Name of the compute resource"
 }
 
 variable "ami" {
-  type = string
-  description = "AMI type fo the compute resources"
+  type        = string
+  description = "AMI ID for the compute resource"
 }
 
 variable "instance_type" {
-  type = string
-  description = "Type of AMI compute instance"
-  default = "t3.micro"
-}
-
-variable "instance_count" {
-  type = number
-  description = "Amount of compute resources"
-  default = 1
+  type        = string
+  description = "Instance type"
+  default     = "t3.micro"
 }
 
 variable "subnet_id" {
-  type = string
-  description = "subnet id to place the instance in"
+  type        = string
+  description = "Subnet ID to place the instance in"
 }
 
 variable "associate_public_ip" {
-  type = bool
-  default = false
-  description = "Whether instances should have public ip or not"
+  type        = bool
+  default     = false
+  description = "Associate public IP address"
 }
 
 variable "key_name" {
-  type = string
-  description = "optional key pair for SSH access"
-  default = ""
+  type        = string
+  description = "SSH key pair name"
+  default     = ""
 }
 
 variable "security_group_ids" {
-  type = list(string)
-  default = []
-  description = "Existing security groups to attach to instances"
-}
-
-variable "allow_ssh_cidr" {
-  type = list(string)
-  description = "list of CIDR allowed to SSH"
-  default = []
+  type        = list(string)
+  default     = []
+  description = "Security group IDs to attach"
 }
 
 variable "iam_instance_profile" {
-  type = string
-  description = "Optional IAM instance profile to attach"
+  type        = string
+  description = "IAM instance profile name"
+  default     = ""
 }
 
 variable "user_data" {
-  type = string
-  description = "Optional user_data script content"
-  default = ""
+  type        = string
+  description = "User data script content"
+  default     = ""
 }
 
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID for context"
+  default     = ""
+}
 
+variable "tags" {
+  type        = map(string)
+  description = "Tags to apply to resources"
+  default     = {}
+}
 
+variable "root_volume_size" {
+  type        = number
+  description = "Root volume size in GB"
+  default     = 20
+}
+
+variable "root_volume_type" {
+  type        = string
+  description = "Root volume type"
+  default     = "gp3"
+}
+
+variable "monitoring" {
+  type        = bool
+  description = "Enable detailed monitoring"
+  default     = false
+}
