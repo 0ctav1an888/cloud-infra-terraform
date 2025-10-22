@@ -25,6 +25,12 @@ variable "management_subnet" {
   description = "CIDR for management subnet"
 }
 
+variable "guest_subnet" {
+  type        = string
+  description = "CIDR for guest Wi-Fi subnet"
+  default     = ""
+}
+
 variable "azs" {
   type        = list(string)
   description = "Availability zones to place subnets into"

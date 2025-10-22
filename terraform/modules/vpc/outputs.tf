@@ -37,3 +37,13 @@ output "public_route_table_id" {
   description = "Public route table id for the VPC"
   value       = aws_route_table.public.id
 }
+
+output "guest_subnet_id" {
+  description = "Guest Wi-Fi subnet ID"
+  value       = length(aws_subnet.guest) > 0 ? aws_subnet.guest[0].id : null
+}
+
+output "guest_subnet_cidr" {
+  description = "Guest Wi-Fi subnet CIDR"
+  value       = length(aws_subnet.guest) > 0 ? aws_subnet.guest[0].cidr_block : null
+}
